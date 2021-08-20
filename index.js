@@ -13,16 +13,16 @@ const delta = following.reduce((acc, v) => {
 }, [])
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-const asyncClick = btn => sleep(1000).then(() => {if (btn) {btn.click()}})
+const asyncClick = btn => sleep(500).then(() => {if (btn) {btn.click()}})
 
 const clearDelta = () => {
   let counter = 0
   let workWindow = window.open(location.origin, '_blank')
 
-  const proceedOrStop = () => sleep(2500).then(() => {
+  const proceedOrStop = () => sleep(1000).then(() => {
     if (delta.length > counter) {
       ++counter
-      sleep(1000).then(() => unsubscribe(counter))
+      setTimeout(() => unsubscribe(counter), 500)
     }
   })
 
