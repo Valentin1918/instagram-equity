@@ -19,12 +19,12 @@ const clearDelta = () => {
   let counter = 0
   let workWindow = window.open(location.origin, '_blank')
 
-  const proceedOrStop = () => sleep(1000).then(() => {
+  const proceedOrStop = () => {
     if (delta.length > counter) {
       ++counter
-      setTimeout(() => unsubscribe(counter), 500)
+      unsubscribe(counter)
     }
-  })
+  }
 
   const unsubscribe = async (n) => {
     workWindow.location.href = `${location.origin}${delta[n].href}`
@@ -33,7 +33,7 @@ const clearDelta = () => {
       btn.click()
       await asyncClick(workWindow.document.querySelector('.-Cab_'))
     }
-    await proceedOrStop()
+    setTimeout(() => proceedOrStop(), 1000)
   }
 
   unsubscribe(0)
