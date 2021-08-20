@@ -13,7 +13,7 @@ const delta = following.reduce((acc, v) => {
 }, [])
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-const asyncClick = btn => sleep(1000).then(() => if (btn) {btn.click()})
+const asyncClick = btn => sleep(1000).then(() => {if (btn) {btn.click()}})
 
 const clearDelta = () => {
   let counter = 0
